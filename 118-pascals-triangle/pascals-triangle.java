@@ -7,9 +7,11 @@ class Solution {
         for(int i=1;i<numRows;i++){
             List<Integer> cur=new ArrayList<>();
             cur.add(1);
+            int ans=1;
             for(int j=1;j<i;j++){
-                int ele=prev.get(j-1)+prev.get(j);
-                cur.add(ele);
+                ans=ans*(i-j+1);
+                ans=ans/j;
+                cur.add(ans);
             }
             cur.add(1);
             res.add(cur);
