@@ -17,15 +17,17 @@ class Solution {
             temp=temp.next;
             len++;
         }
-        int pos=k%len;
-        if(pos==0) return head;
-        ListNode current=head;
-        for(int i=0;i<len-pos-1;i++){
-            current=current.next;
+        k=k%len;
+        if(k==0)return head;
+        int r=len-k;
+        temp.next = head;
+        ListNode newtemp=temp;
+        while(r>0){
+            newtemp=newtemp.next;
+            r--;
         }
-        ListNode newHead=current.next;
-        current.next=null;
-        temp.next=head;
+        ListNode newHead=newtemp.next;
+        newtemp.next=null;
         return newHead;
     }
 }
