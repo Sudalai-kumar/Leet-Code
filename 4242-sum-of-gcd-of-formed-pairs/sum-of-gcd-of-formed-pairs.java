@@ -15,10 +15,10 @@ class Solution {
             mxi=Math.max(mxi,nums[i]);
             prefixGcd[i]=Gcd(nums[i],mxi);
         }
-        prefixGcd=Arrays.stream(prefixGcd).boxed().sorted(Comparator.reverseOrder()).mapToLong(Long::longValue).toArray();
+        Arrays.sort(prefixGcd);
         long sumGcd=0;
         for(int i=0;i<=n/2-1;i++){
-            sumGcd+=Gcd(prefixGcd[i],prefixGcd[n-i-1]);
+            sumGcd+=Gcd(prefixGcd[n-i-1],prefixGcd[i]);
         }
         return sumGcd;
     }
