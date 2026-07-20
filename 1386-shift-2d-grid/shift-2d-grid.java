@@ -4,7 +4,7 @@ class Solution {
         int n=grid[0].length;
 
         List<List<Integer>> res=new ArrayList<>();
-        
+        k=k%(m*n);
         for(int l=0;l<k;l++){
             int temp[][]=new int[m][n];
             for(int i=0;i<m;i++){
