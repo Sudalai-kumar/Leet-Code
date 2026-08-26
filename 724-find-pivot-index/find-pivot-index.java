@@ -1,17 +1,24 @@
 class Solution {
     public int pivotIndex(int[] nums) {
         int n=nums.length;
-        int prefix[]=new int[n];
-        prefix[0]=nums[0];
+        int prefixsum[]=new int[n];
+        int suffixsum[]=new int[n];
+        int pivot=-1;
+        prefixsum[0]=nums[0];
         for(int i=1;i<n;i++){
-            prefix[i]=prefix[i-1]+nums[i];
+            prefixsum[i]=nums[i]+prefixsum[i-1];
         }
-        for (int i = 0; i < n; i++){
-            int leftsum = (i == 0) ? 0 : prefix[i - 1];
-            int rightsum = prefix[n-1]-prefix[i];
-            if (leftsum == rightsum)
-                return i;
+        suffixsum[n-1]=nums[n-1];
+        for(int i=n-2;i>=0;i--){
+            suffixsum[i]=nums[i]+suffixsum[i+1];
         }
-        return -1;
+
+        for(int i=0;i<n;i++){
+            if(prefixsum[i]==suffixsum[i]){
+                pivot=i;
+                return pivot;
+            }
+        }
+        return pivot;
     }
 }
