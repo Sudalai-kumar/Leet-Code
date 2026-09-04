@@ -1,5 +1,6 @@
 class RandomizedSet {
     Set<Integer> rs;
+    Random rd=new Random();
     public RandomizedSet() {
         rs=new HashSet<>();
     }
@@ -21,7 +22,7 @@ class RandomizedSet {
     }
     
     public int getRandom() {
-        int ri=new Random().nextInt(rs.size());
+        int ri=rd.nextInt(rs.size());
         int r=rs.stream().skip(ri).findFirst().get();
         return r;
     }
