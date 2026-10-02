@@ -10,7 +10,6 @@ class Solution {
             return;
         }
         if(open<n){
-            System.out.println(open);
             backTrack(res,r+'(',open+1,close,n);
         }
         if(close<open){
